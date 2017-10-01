@@ -1,0 +1,108 @@
+---
+title: "DDS - Unit 04 HW"
+author: "Jeremy Lubich"
+date: "October 1, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 1 - Setup FiveThirtyEight Data
+
+### a. Install the package - Done
+
+```{r Install 538 package}
+
+###################################################################
+## DDS - Unit 04 - Live Session Assignment
+## Jeremy Lubich - 2017/10/01
+###################################################################
+
+## Install Devtools and 538 package
+##install.packages("tidyverse", dependencies=TRUE, type="source")
+##install.packages("devtools")
+##install.packages("fivethirtyeight")
+library(fivethirtyeight)
+library(plyr)
+library(RColorBrewer)
+```
+
+### b. Assign 18th data set to df
+
+```{r Get data set 18}
+df <- college_recent_grads
+```
+
+### c. Write out the URL
+
+
+```{r URL}
+## http://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/
+```
+
+### d. Dimensions and Column Names of df
+
+
+```{r Dimensions}
+## Rows and Column counts
+dim(df)
+## Column Names
+colnames(df)
+```
+
+## 2 - Data Summary
+
+### a. Columns Names, Count of Columns
+```{r column count}
+## Column Names
+colnames(df)
+## Count of Column Names
+ncol(df)
+```
+
+### b. Count of unique major_category
+
+```{r major_count}
+## Frequency of Majors
+major_count = count(df, "major_category")
+```
+
+### c. Barplot of major_category
+
+```{r barplot}
+## Frequency of Majors
+major_count = major_count[ order(major_count$freq),]
+par(las=1, mai= c(.8, 4, .3, .5), mgp= c(1, 2.2, 0))
+barplot(
+    major_count$freq, 
+    names.arg = major_count$major_category,
+    main = "College Majors by Sample Frequency",
+    ylab = "Category",
+    xlab = "Frequency in sample",
+    horiz = TRUE,
+    col=brewer.pal(n = length(unique(df$major_category)), name = "Dark2")
+)
+```
+
+### d. Write the data to a .csv
+
+```{r Output to CSV}
+
+
+setwd("C:/Users/LubichJD/OneDrive - Unisys/SMU/DDS")
+getwd()
+
+write.csv(df, "college_recent_grads2.csv", row.names = FALSE)
+
+```
+
+
+
+# Session Info
+
+```{r session_info}
+
+sessionInfo()
+```
