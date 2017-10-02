@@ -102,6 +102,10 @@ write.csv(df, "college_recent_grads.csv", row.names = FALSE)
 ### URL:
 https://github.com/jlubich/MSDS-Jeremy-Lubich
 
+## 4 - Swirl - Complete
+Results at: https://github.com/jlubich/MSDS-Jeremy-Lubich/blob/master/HW_UNIT_04/swirl%20output%20-%20HW%204.txt
+
+
 # Session Info
 
 ```{r session_info}
