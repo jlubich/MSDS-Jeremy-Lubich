@@ -90,15 +90,17 @@ barplot(
 
 ```{r Output to CSV}
 
+## Check your wd before you output, this is where the .csv file will go
+## getwd()
 
-setwd("C:/Users/LubichJD/OneDrive - Unisys/SMU/DDS")
-getwd()
-
-write.csv(df, "college_recent_grads2.csv", row.names = FALSE)
+write.csv(df, "college_recent_grads.csv", row.names = FALSE)
 
 ```
 
+## 3 - GitHub 
 
+### URL:
+https://github.com/jlubich/MSDS-Jeremy-Lubich
 
 # Session Info
 
