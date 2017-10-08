@@ -2,3 +2,11 @@ README FOR UNIT 05 Homework
 Jeremy Lubich
 2017-10-08
 
+CONTENTS OF FOLDER AND PURPOSE:
+
+HW_UNIT_05.html - Final HTML for grading
+HW_UNIT_05.R - Initial R file for developing
+HW_UNIT_05.Rmd - Final Rmd for grading
+Top10GirlNames.csv - Output from HW
+yob2015.txt - Input for HW
+yob2016.txt - Input for HW
