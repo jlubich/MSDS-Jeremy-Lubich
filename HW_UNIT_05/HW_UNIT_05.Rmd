@@ -1,0 +1,129 @@
+---
+title: "UNIT 05 HW"
+author: "Jeremy Lubich"
+date: "October 8, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Question 1 - Data Munging - yob2016.txt
+
+### 1.a Import File
+
+```{r 1.a}
+
+#setwd("C:/Users/LubichJD/OneDrive - Unisys/SMU/DDS/MyGitHubFiles/MSDS-Jeremy-Lubich/HW_UNIT_05")
+
+df <- read.delim("yob2016.txt", sep = ";", header= FALSE, col.names = c("Name", "Gender", "Count"))
+
+```
+
+### 1.b Display Summary and Structure
+
+```{r 1.b}
+
+summary(df)
+str(df)
+
+```
+
+### 1.c Find and display the record with yyy at the end
+
+```{r 1.c}
+
+subset(df, grepl("yyy", df$Name))
+
+```
+
+### 1.d Remove the bad record and save as y2016
+
+```{r 1.d}
+
+y2016 <- df[-grepl("yyy", df$Name), ]
+
+````
+
+## Question 2 - Data Merging 
+
+### 2.a Import File yob2015.txt as y2015
+
+```{r 2.a}
+
+y2015 <- read.delim("yob2015.txt", sep = ",", header= FALSE, col.names = c("Name", "Gender", "Count"))
+
+```
+
+### 2.b Display last 10 rows and comment on what you see
+
+```{r 2.b}
+
+tail(y2015, 10)
+print("Interesting, the last 10 rows are all boys")
+
+````
+
+### 2.c Merge t2015 & y2016 inner join on Name, assign to final
+
+```{r 2.c}
+
+final <- merge(
+    y2015, 
+    y2016, 
+    by.x = "Name", 
+    by.y = "Name"
+)
+
+```
+
+## Question 3 - Data Summary
+
+### 3.a Create "Total" column and display the total 
+
+```{r 3.a}
+
+final$Total <- final$Count.x + final$Count.y
+
+```
+
+### 3.b Sort by Total, List the top 10 most popular names
+
+```{r 3.b}
+
+final <- final[order(-final$Total), ]
+head(final, 10)
+
+```
+
+### 3.c Omit Boys names and give top 10 girls names
+
+```{r 3.c}
+
+head(final[final$Gender.x == "F", ], 10)
+
+```
+
+### 3.d Write the top 10 girls names and Totals to a CSV, leaving other columns out
+
+```{r 3.d}
+
+top.10.girls <- head(final[final$Gender.x == "F", c("Name", "Total")], 10)
+write.csv(top.10.girls, "Top10GirlNames.csv", row.names = FALSE)
+
+```
+
+## Question 4 - Upload to Github
+
+### URL:
+https://github.com/jlubich/MSDS-Jeremy-Lubich
+
+
+# Session Info
+
+```{r session_info}
+
+sessionInfo()
+```
+
