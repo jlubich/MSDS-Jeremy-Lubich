@@ -116,9 +116,13 @@ write.csv(top.10.girls, "Top10GirlNames.csv", row.names = FALSE)
 
 ## Question 4 - Upload to Github
 
-### URL:
+### Codebook is called: *README*
+
+### My Github Repo URL:
 https://github.com/jlubich/MSDS-Jeremy-Lubich
 
+### This Assignment URL:
+https://github.com/jlubich/MSDS-Jeremy-Lubich/tree/master/HW_UNIT_05
 
 # Session Info
 
